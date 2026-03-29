@@ -6,21 +6,37 @@ public class Inventory {
 
     public void addItem(Item item) {
         // Aquí tu código
+        items.add(item);
     }
 
     public boolean removeItem(String itemName) {
         // Aquí tu código
+        Item encontrarItem = findItem(itemName);
+        if (encontrarItem != null){
+            items.remove(encontrarItem);
+            return true;
+        }
         return false;
     }
 
     public Item findItem(String itemName) {
         // Aquí tu código
+        for (Item item : items){
+            if (item.getName().equals(itemName)){
+                return item;
+            }
+        }
         return null;
     }
 
     public double getTotalWeight() {
         // Aquí tu código
-        return 0.0; // sustituye esto por el valor real
+        double plusPeso = 0.0;
+        for (Item item: items){
+            plusPeso += item.getWeight();
+        }
+
+        return plusPeso; // sustituye esto por el valor real
     }
 
     // Este getter no es necesario modificarlo
